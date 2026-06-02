@@ -17,16 +17,6 @@ namespace ExitWarpLimiter
             base.StartServerSide(api);
             Sapi = api;
 
-            // try
-            // {
-            //     CheckDbCommand.Register();
-            //     api.Logger.Notification("[tWarpLimiter] Commands registered successfully!");
-            // }
-            // catch (Exception ex)
-            // {
-            //     api.Logger.Error($"[tWarpLimiter] Failed to register commands! (e: {ex})");
-            // }
-
             try
             {
                 // api.Logger.Notification($"[tWarpLimiter] Concrete WorldManager Type: {api.WorldManager.GetType().FullName}");
