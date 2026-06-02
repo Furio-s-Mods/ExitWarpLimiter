@@ -12,9 +12,8 @@ It patches the translocator's lookup ticker. If the randomly selected target coo
 
 Long-distance teleports remain completely functional, provided the destination exit lands within previously explored and generated chunks.
 
-<!-- ### How To Use
-- [see mod page](https://mods.vintagestory.at/show/mod/???)
---- -->
+### How To Use
+- [see mod page](https://mods.vintagestory.at/exitwarplimiter)
 
 ## Contribution & Development
 
