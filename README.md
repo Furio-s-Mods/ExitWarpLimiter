@@ -1,6 +1,6 @@
 # Exit Warp Limiter
 
-A lightweight server-side utility mod for **Vintage Story 1.22.2 (.NET 10)**.
+A lightweight server-side utility mod for **Vintage Story (.NET 10)**.
 
 This mod filters the destination picking routine of static translocators. It guarantees that a translocator exit will never attempt to generate inside ungenerated chunks, keeping the server completely clear of unexpected background world generation spikes.
 
@@ -20,7 +20,8 @@ Long-distance teleports remain completely functional, provided the destination e
 Want to contribute code or compile this mod locally? Please review the central [Contributing Guidelines](https://github.com/Furio-s-Mods/.github/blob/main/CONTRIBUTING.md) for environment setup and path management instructions.
 
 ## Acknowledgements
-- [Anego Studios](https://anegostudios.com) - Vintage Story Devs
+* **[Anego Studios](https://anegostudios.com)** - Vintage Story Devs
+* **AlteOgre** for the original idea for the [Ilu Ambar Server](https://www.vintagestory.at/forums/topic/15864-1222euen-ilu-ambar-quenta-y%C3%A1ra-whitelisted-coop-build-pve-focussed-modded-light-rp-new-player-friendly-difficulty-progression-unique/)
 
 
 ## License
