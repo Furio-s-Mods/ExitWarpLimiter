@@ -12,6 +12,23 @@ It patches the translocator's lookup ticker. If the randomly selected target coo
 
 Long-distance teleports remain completely functional, provided the destination exit lands within previously explored and generated chunks.
 
+### Implementation:
+```text
+[Server Tick] 
+   └── findNextChunk == true? 
+        ├── No  --> 0% CPU overhead. Translocator sleeps while threads work.
+        └── Yes --> Reset flag. Check Cache.
+             ├── HasCandidateChunk == false (Pass 1)
+             │    └── Roll 5 positions -> Set PendingQueries = 5 -> Blast TestChunkExists -> Exit Tick.
+             └── HasCandidateChunk == true  (Pass 2)
+                  └── Reset flag -> Blast PeekChunkColumn -> Exit Tick.
+
+[DB / Thread Pool Callback (ProcessSlot)]
+   ├── Block broken mid-flight? --> Abort safely via world presence check.
+   ├── Chunk Exists?            --> Set HasCandidateChunk = true, findNextChunk = true -> Wake main thread.
+   └── Chunk Missing?           --> Decrement counter. If 0, set findNextChunk = true to try a new batch.
+```
+
 ### How To Use
 - [see mod page](https://mods.vintagestory.at/exitwarplimiter)
 

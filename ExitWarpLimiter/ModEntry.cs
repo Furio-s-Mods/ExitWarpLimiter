@@ -1,4 +1,3 @@
-using System;
 using HarmonyLib;
 using Vintagestory.API.Common;
 using Vintagestory.API.Server;
@@ -17,13 +16,12 @@ public class ExitWarpLimiterSystem : ModSystem
     {
         base.StartServerSide(api);
 
+        ModConfig.Load(api);
+
         try
         {
-            // api.Logger.Notification($"[{ModName}] Concrete WorldManager Type: {api.WorldManager.GetType().FullName}");
-            // api.Logger.Notification($"[{ModName}] Initializing Harmony hooks...");
             harmony = new Harmony(HarmonyId);
             harmony.PatchAll(System.Reflection.Assembly.GetExecutingAssembly());
-            api.Logger.Notification($"[{ModName}] Harmony patches applied successfully!");
         }
         catch (Exception ex)
         {
@@ -33,7 +31,7 @@ public class ExitWarpLimiterSystem : ModSystem
 
     public override void Dispose()
     {
-        if (System.Threading.Interlocked.Exchange(ref disposed, 1) == 1) return;
+        if (Interlocked.Exchange(ref disposed, 1) == 1) return;
 
         harmony?.UnpatchAll(HarmonyId);
         harmony = null;
